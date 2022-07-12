@@ -1,5 +1,5 @@
 import React from "react";
-
+import { Link } from "react-router-dom";
 const ItemDetail = ({detail}) => {
 
 
@@ -17,7 +17,7 @@ const ItemDetail = ({detail}) => {
               <p >producto.rating</p> 
             </div>
             <div class="card-action">
-              <a href="id">Ver mas</a>
+              <Link to="#">Comprar</Link>
             </div>
           </div>
         </div>

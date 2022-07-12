@@ -1,6 +1,6 @@
 
 import React from "react";
-
+import { Link } from "react-router-dom";
 
 
 
@@ -20,7 +20,7 @@ return (
         {/* <p >{producto.description}</p> */}
       </div>
       <div class="card-action">
-        <a href={producto.id}>Ver mas</a>
+        <Link to={producto.id}>Más detalles</Link>
       </div>
     </div>
   </div>
