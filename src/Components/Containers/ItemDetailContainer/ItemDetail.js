@@ -1,6 +1,6 @@
 import React, { useState, useContext } from "react";
 import { Link } from "react-router-dom";
-
+import MiComponente from "../../ItemCount/ItemCount"
 
 
 const ItemDetail = ({ product }) => {
@@ -25,9 +25,13 @@ const ItemDetail = ({ product }) => {
             </div>
             <div class="card-action">
               <Link to="/Carrito">Comprar</Link>
+           
             </div>
+            
           </div>
+        
         </div>
+        <MiComponente />
       </div>
   );
 };

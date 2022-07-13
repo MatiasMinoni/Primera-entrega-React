@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import Itemlista from "./ItemList";
-
+import CircularProgress from '@mui/material/CircularProgress';
 import { useParams } from "react-router-dom";
+
 
 
 export const ItemListContainer = ({ greeting }) => {
@@ -31,8 +32,8 @@ fetch(URL)
     return (
         <>
      
-     {loaded ? <p>Cargando...</p>  : <Itemlista productos={productos}/>}
-       
+     {loaded ?<CircularProgress  />  : <Itemlista productos={productos}/> }
+   
       
         </>
     )
