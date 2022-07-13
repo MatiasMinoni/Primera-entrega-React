@@ -18,7 +18,6 @@ import ItemListContainer from './Components/Containers/ItemListContainer/ItemLis
 import CartWidget from './Components/CartWidget/CartWidget';
 import Cart from './Components/Cart/Cart';
 
-
 const App = () => {
   return (
     
@@ -27,13 +26,14 @@ const App = () => {
     <NavBar />
 <Routes>
 <Route path='/' element={<ItemListContainer greeting="Bienvenido"  />}/>
-<Route path='/Tienda/:categoryName' element={<ItemListContainer />}/>
-<Route path='/item/:itemId' element={<ItemDetailContainer />}/>
+<Route path='/category/:categoryId' element={<ItemListContainer />}/>
+<Route path="/product/:productId" element={<ItemDetailContainer />} />
 <Route path='/Carrito' element={<Cart/>}/>
 </Routes>
 
 
 </BrowserRouter>
+
     </>
 
   );

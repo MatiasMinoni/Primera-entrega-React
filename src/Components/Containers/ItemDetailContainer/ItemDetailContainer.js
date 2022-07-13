@@ -1,38 +1,29 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from 'react'
+import CircularProgress from '@mui/material/CircularProgress';
 import ItemDetail from './ItemDetail';
-import { useParams } from "react-router-dom";
+import { useParams } from 'react-router-dom';
 
-const ItemDetailContainer = () => {
- const [detail, setDetail] = useState([]);
- const [error, setError] = useState(false);
- const [loading, setLoading] = useState (true);
- const resultado = useParams();
- console.log(resultado);
+export const ItemDetailsContainer = () => {
 
+    const [product, setProduct] = useState([]);
+    const [loaded, setLoaded] = useState(true)
 
- useEffect(() =>{
-   const getDetail = async () =>{
-   try {const response = await fetch('https://fakestoreapi.com/products');
-     const data = await response.json();
-     setDetail(data);}
-     catch(err) {
-       console.log(err);
-       setError(true);
-     }
-     finally{
-       setLoading(false);
-     }
-   }
-   getDetail();
- },[]);
+    const { productId } = useParams();
 
-    return(
-        <>{loading ? <p>Loading...</p> : error ? <p>Error...</p> : 'Todo bien'}
-        <ItemDetail detail={detail} />
+    useEffect(() => {
+        fetch(`https://fakestoreapi.com/products/${productId}`)
+            .then(res=>res.json())
+            .then(data=>setProduct(data))
+            .catch(err=>console.log(err))
+            .finally(()=>setLoaded(false))
+    }, [productId]);
+
+    return (
+        <>
+            {loaded ? <CircularProgress color="success" /> : <ItemDetail product={product} />}
         </>
-        
     )
 }
 
 
-export default ItemDetailContainer
+export default ItemDetailsContainer

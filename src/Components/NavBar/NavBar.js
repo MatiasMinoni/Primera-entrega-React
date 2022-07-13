@@ -1,15 +1,16 @@
 import React from 'react';
 import CartWidget from '../CartWidget/CartWidget';
  import 'materialize-css/dist/css/materialize.min.css';
- import { Link , NavLink } from 'react-router-dom';
+ import {  NavLink } from 'react-router-dom';
 // import "./src/App.css";
 // // importar iconos de google
 
  
 const Categorias = [
-  { nombre: 'Tecnología', id: 0, ruta: "Tienda/Tecnologia" },
-  { nombre: 'Indumentaria', id: 1, ruta: "Tienda/Indumentaria" },
-  { nombre: 'Joyas', id: 2, ruta: "Tienda/Joyas" }
+  { nombre: 'Tecnología', id: 0, ruta: "category/electronics" },
+  { nombre: 'Joyas', id: 1, ruta: "category/jewelery" },
+  { nombre: 'Hombres', id: 2, ruta: "category/men's clothing" },
+  { nombre: 'Mujeres', id: 3, ruta: "category/women's clothing" }
 ]
 
     const NavBar = () => {

@@ -1,30 +1,37 @@
-import React from "react";
+import React, { useState, useContext } from "react";
 import { Link } from "react-router-dom";
-const ItemDetail = ({detail}) => {
 
 
-    return(
-        <div key="id" class="row ">
+
+const ItemDetail = ({ product }) => {
+
+
+
+  
+
+
+  return (
+    <div key="id" class="row ">
         <div class="col s12 m4">
           <div class="card">
             <div class="card-image">
-              <img  src=""  alt=""></img>
-              <span  class="card-title">Titulo</span>
+              <img  src={product.image} alt=""></img>
+              <span  class="card-title">{product.title}</span>
             </div>
             <div class="card-content">
-              <p >Precio: producto.price</p>
-              <p >producto.description</p> 
-              <p >producto.rating</p> 
+              <p >Precio: {product.price}</p>
+              <p >{product.description}</p> 
+              <p ></p> 
             </div>
             <div class="card-action">
-              <Link to="#">Comprar</Link>
+              <Link to="/Carrito">Comprar</Link>
             </div>
           </div>
         </div>
       </div>
-      
-    )
-}
+  );
+};
+
 
 
 export default ItemDetail

@@ -1,38 +1,39 @@
 import React, { useState, useEffect } from "react";
 import Itemlista from "./ItemList";
-import MiComponente from "../../ItemCount/ItemCount";
 
-const ItemListContainer =  (prop) => {
+import { useParams } from "react-router-dom";
 
+
+export const ItemListContainer = ({ greeting }) => {
+
+
+  const { categoryId } = useParams();
+
+  const [loaded, setLoaded] = useState(true)
     const [productos, setProductos] = useState([]);
     const [error, setError] = useState (false);
-    const [loading, setLoading] = useState (true);
-    
-    useEffect(() =>{
-      const getProducts = async () =>{
-      try {const response = await fetch('https://fakestoreapi.com/products');
-           const data = await response.json();
-           setProductos(data);
-          }
-        catch(err) {
-          console.log(err);
-          setError(true);
-        }
-        finally{
-          setLoading(false);
-        }
-        
-      }
-      getProducts();
-    },[]);
 
+
+
+useEffect(()=>{
+  const URL = categoryId
+  ? `https://fakestoreapi.com/products/category/${categoryId}`
+  : "https://fakestoreapi.com/products/";
+ 
+fetch(URL)
+.then(res => res.json())
+.then(data => setProductos(data))
+.catch(err => console.log(err))
+.finally(() => setLoaded(false))
+  
+}, [categoryId]);
    
     return (
         <>
      
-        {loading ? <p>cargando...</p> : error ? <p>Error....</p> : <p></p>}
-        <Itemlista productos={productos}/>
-        <MiComponente stock = {8} initial = {1}/>
+     {loaded ? <p>Cargando...</p>  : <Itemlista productos={productos}/>}
+       
+      
         </>
     )
 }

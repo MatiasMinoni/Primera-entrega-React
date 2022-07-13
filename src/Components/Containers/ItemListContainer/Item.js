@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 
 const Item = ({producto}) => {
 return (
-  
+  <>
 
   <div key={producto.id} class="row ">
   <div class="col s12 m4">
@@ -17,17 +17,17 @@ return (
       </div>
       <div class="card-content">
         <p >Precio: {producto.price} </p>
-        {/* <p >{producto.description}</p> */}
+        <p >{producto.description}</p> 
       </div>
       <div class="card-action">
-        <Link to={producto.id}>Más detalles</Link>
+        <Link to={`/product/${producto.id}`}>Más detalles</Link>
       </div>
     </div>
   </div>
 </div>
 
 
-
+</>
 )
 
  }
